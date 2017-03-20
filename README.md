@@ -47,8 +47,17 @@ source venv/bin/activate
 > Obs: Apesar de ter acabado de mencionar, vou prosseguir os exemplos como se não tivesse ativado, para ficar mais declarativo, exemplo quando menciono **(./venv/bin/python)**
 
 ### 2.4. Instalando as dependências (dentro do novo virtualenv)
+
+### 2.4.1. Em produção
+
 ```bash
-$ ./venv/bin/pip install -r requirements.txt
+$ ./venv/bin/pip install -r requirements/prod.txt
+```
+
+### 2.4.3. Em desenvolvimento (com as ferramentas de testes)
+
+```bash
+$ ./venv/bin/pip install -r requirements/dev.txt
 ```
 
 ### 2.5. Criando um banco de dados
@@ -216,7 +225,7 @@ $ curl -X GET \
     -H "Content-Type: application/json"
 ```
 
-### 3.6. Buscando de todas feiras
+### 3.6. Buscando por todas feiras
 
 **Endpoint:**
 > GET /api/v1/feiraslivres/

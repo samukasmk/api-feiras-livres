@@ -1,0 +1,6 @@
+-r requirements/common.txt
+
+pyflakes==1.5.0
+pytest==3.0.7
+pytest-flakes==1.0.1
+pytest-flask==0.10.0
