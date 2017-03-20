@@ -102,7 +102,6 @@ Se a conexão com o banco de dados estiver correta, e o schema estiver criado, b
 
 ```bash
 $ cd src
-$ ../venv/bin/python manage.py db migrate
 $ ../venv/bin/python manage.py db upgrade
 ```
 
@@ -132,18 +131,7 @@ A API é implementada pela pacote Flask-RESTful, onde existem 2 principais endpo
 
 -  **/api/v1/feiraslivres/:** Consulta de varias feiras, podendo ser por filtro.
 
-### 3.1. Buscando uma feira pelo código de registro
-
-**Endpoint:**
-> GET /api/v1/feiralivre/{registro}
-
-**Exemplo:**
-```bash
-$ curl -X GET http://127.0.0.1:8080/api/v1/feiralivre/6005-4 \
-    -H "Content-Type: application/json"
-```
-
-### 3.2. Cadastrando de uma nova feira:
+### 3.1. Cadastrando de uma nova feira:
 
 **Endpoint:**
 > POST /api/v1/feiralivre/{registro}
@@ -171,17 +159,18 @@ $ curl -X POST http://127.0.0.1:8080/api/v1/feiralivre/6005-4 \
         }'
 ```
 
-### 3.3. Excluindo de uma feira através de seu código de registro:
+### 3.2. Obtendo dados de uma feira pelo código de registro
+
 **Endpoint:**
-> DELETE /api/v1/feiralivre/{registro}
+> GET /api/v1/feiralivre/{registro}
 
 **Exemplo:**
 ```bash
-$ curl -X DELETE http://127.0.0.1:8080/api/v1/feiralivre/6005-4 \
+$ curl -X GET http://127.0.0.1:8080/api/v1/feiralivre/6005-4 \
     -H "Content-Type: application/json"
 ```
 
-### 3.4. Alterando dos campos cadastrados de uma feira, exceto seu código de registro:
+### 3.3. Alterando dos campos cadastrados de uma feira, exceto seu código de registro:
 **Endpoint:**
 > PUT /api/v1/feiralivre/{registro}
 
@@ -206,6 +195,16 @@ $ curl -X PUT http://127.0.0.1:8080/api/v1/feiralivre/6005-4 \
           "regiao5": "NOVO VALOR",
           "regiao8": "NOVO VALOR"
         }'
+```
+
+### 3.4. Excluindo de uma feira através de seu código de registro:
+**Endpoint:**
+> DELETE /api/v1/feiralivre/{registro}
+
+**Exemplo:**
+```bash
+$ curl -X DELETE http://127.0.0.1:8080/api/v1/feiralivre/6005-4 \
+    -H "Content-Type: application/json"
 ```
 
 ### 3.5. Buscando de feiras utilizando ao menos um dos parâmetros abaixo:

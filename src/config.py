@@ -17,10 +17,13 @@ LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 # Define the database uri 'dialect+driver://username:password@host:port/database'
 # http://flask-sqlalchemy.pocoo.org/2.1/config/?highlight=mysql#connection-uri-format
 
-# SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'api_feira_livre.db')
-SQLALCHEMY_DATABASE_URI = 'mysql://root:toor@127.0.0.1/api_feira_livre'
-SQLALCHEMY_POOL_SIZE = 5
-SQLALCHEMY_POOL_TIMEOUT = 10
+# SQLite
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'api_feira_livre.db')
+
+# MySQL
+# SQLALCHEMY_DATABASE_URI = 'mysql://root:toor@127.0.0.1/api_feira_livre'
+# SQLALCHEMY_POOL_SIZE = 5
+# SQLALCHEMY_POOL_TIMEOUT = 10
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # Enable protection agains *Cross-site Request Forgery (CSRF)*
