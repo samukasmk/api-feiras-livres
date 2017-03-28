@@ -80,7 +80,7 @@ def delete_feiralivre(registro):
 
 @feira_livre_api.route('/api/v1/feiraslivres/', methods=['GET'])
 def get_feiraslivres():
-    # Define
+    # Define argument parser from get params
     parser = reqparse.RequestParser()
     parser.add_argument('id', type=int, location='args', required=False)
     parser.add_argument('bairro', type=str, location='args', required=False)
@@ -91,14 +91,8 @@ def get_feiraslivres():
 
     # Build query object with params
     query = FeiraLivre.query
-    if 'offset' in args.keys():
-        query = query.offset(args.pop('offset'))
-    if 'limit' in args.keys():
-        query = query.limit(args.pop('limit'))
     query_params = {k: v for k, v in args.items() if v}
-
     feira_obj = query.filter_by(**query_params).all()
-
     if feira_obj:
         return jsonify(feiras=[e.serialize() for e in feira_obj])
     else:
