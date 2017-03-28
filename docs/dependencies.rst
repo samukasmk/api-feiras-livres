@@ -1,13 +1,28 @@
 Requisitos básicos
 ==================
 
-Para executar em produção
+Todas essas pendencias estão declaradas nos arquivos dentro a pasta de requirements:
+
+- ``requirements/prod.txt`` (com as dependências de modo de produção)
+- ``requirements/dev.txt`` (com as dependências de modo desenvolvedor)
+
+
+
+Ferramentas básicas
 -------------------------
 
 +-----------------------+--------------------------------------------------+
+| **GIT:**              | 2.10.1 (ou superior)                             |
++-----------------------+--------------------------------------------------+
 | **Python:**           | 3.5.2                                            |
 +-----------------------+--------------------------------------------------+
-| **Pip:** 9.0.1        | (ou superior)                                    |
+| **Pip:**              | 9.0.1 (ou superior)                              |
++-----------------------+--------------------------------------------------+
+
+
+Para executar em produção
+-------------------------
+
 +-----------------------+--------------------------------------------------+
 | **Flask:**            | 0.12                                             |
 +-----------------------+--------------------------------------------------+

@@ -25,5 +25,13 @@ aplicação **api-feiras-livres**.
 .. toctree::
    :maxdepth: 4
 
-   requisitos
-   instalacao
+   dependencies
+   install
+   database
+   migrations
+   run
+   api
+   unittests
+   models
+   populate
+   docs
