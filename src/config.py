@@ -8,9 +8,9 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DEBUG = False
 
 # Logging settings
-LOGGING_FOLDER = '../logs'
+LOGGING_FOLDER = os.path.join(BASE_DIR, '../logs')
 LOGGING_LEVEL = logging.DEBUG
-LOGGING_ROTATE_SIZE = 25 # IN MB
+LOGGING_ROTATE_SIZE = 25  # IN MB
 LOGGING_ROTATE_COUNT = 3
 LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
@@ -18,12 +18,12 @@ LOGGING_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 # http://flask-sqlalchemy.pocoo.org/2.1/config/?highlight=mysql#connection-uri-format
 
 # SQLite
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'api_feira_livre.db')
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'api_feira_livre.db')
 
 # MySQL
-# SQLALCHEMY_DATABASE_URI = 'mysql://root:toor@127.0.0.1/api_feira_livre'
-# SQLALCHEMY_POOL_SIZE = 5
-# SQLALCHEMY_POOL_TIMEOUT = 10
+SQLALCHEMY_DATABASE_URI = 'mysql://root:toor@127.0.0.1/api_feira_livre'
+SQLALCHEMY_POOL_SIZE = 5
+SQLALCHEMY_POOL_TIMEOUT = 10
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # Enable protection agains *Cross-site Request Forgery (CSRF)*

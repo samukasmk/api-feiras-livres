@@ -1,4 +1,5 @@
-from app import db
+from app.database import db
+
 
 class FeiraLivre(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True)
@@ -21,9 +22,9 @@ class FeiraLivre(db.Model):
     regiao5 = db.Column(db.String(100), nullable=True)
     regiao8 = db.Column(db.String(100), nullable=True)
     # extra fields
-    date_created  = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                                           onupdate=db.func.current_timestamp())
+                              onupdate=db.func.current_timestamp())
 
     def __init__(self, registro, nome_feira, bairro, logradouro, **kwargs):
         # required fields
@@ -53,7 +54,6 @@ class FeiraLivre(db.Model):
         for column in self.__table__.columns:
             serialized_dict[column.name] = str(getattr(self, column.name))
         return serialized_dict
-
 
 ### Why i used .serialize() method instead .__dict__
 # In [1]: import time

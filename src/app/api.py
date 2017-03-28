@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from flask_restful import Resource, reqparse
-from app import db
+from flask_restful import reqparse
+from app.database import db
 from .models import FeiraLivre
 
 feira_livre_api = Blueprint('feiralivre_api', __name__)
@@ -10,7 +10,6 @@ feira_livre_api = Blueprint('feiralivre_api', __name__)
 def get_feiralivre(registro):
     feira_obj = FeiraLivre.query.filter_by(registro=registro).first()
     if feira_obj:
-        print(feira_obj)
         return jsonify(feira_obj.serialize())
     else:
         return '', 204
@@ -45,7 +44,6 @@ def post_feiralivre(registro):
         return jsonify(error=dict(message=str(e))), 422
     else:
         return jsonify(feira_obj.serialize())
-
 
 
 @feira_livre_api.route('/api/v1/feiralivre/<string:registro>', methods=['PUT'])
@@ -84,11 +82,11 @@ def delete_feiralivre(registro):
 def get_feiraslivres():
     # Define
     parser = reqparse.RequestParser()
-    parser.add_argument('id',         type=int, location='args', required=False)
-    parser.add_argument('bairro',     type=str, location='args', required=False)
-    parser.add_argument('distrito',   type=str, location='args', required=False)
+    parser.add_argument('id', type=int, location='args', required=False)
+    parser.add_argument('bairro', type=str, location='args', required=False)
+    parser.add_argument('distrito', type=str, location='args', required=False)
     parser.add_argument('nome_feira', type=str, location='args', required=False)
-    parser.add_argument('regiao5',    type=str, location='args', required=False)
+    parser.add_argument('regiao5', type=str, location='args', required=False)
     args = parser.parse_args()
 
     # Build query object with params
@@ -97,28 +95,11 @@ def get_feiraslivres():
         query = query.offset(args.pop('offset'))
     if 'limit' in args.keys():
         query = query.limit(args.pop('limit'))
-    query_params = { k:v for k,v in args.items() if v }
+    query_params = {k: v for k, v in args.items() if v}
 
     feira_obj = query.filter_by(**query_params).all()
 
     if feira_obj:
-        return jsonify(feiras=[ e.serialize() for e in feira_obj ])
+        return jsonify(feiras=[e.serialize() for e in feira_obj])
     else:
-        return '', 204
-
-
-
-
-# def list_companies(name, order_by, offset, limit):
-#     query = Company.query
-#
-#     if name:
-#         query = query.filter(func.lower(Company.name).contains(func.lower(name)))
-#     if order_by:
-#         query = sort_query(query, order_by)
-#     if offset:
-#         query = query.offset(offset)
-#     if limit:
-#         query = query.limit(limit)
-#
-#     return query.all()
+        return jsonify(feiras=[]), 204
