@@ -1,6 +1,5 @@
 api-feiras-livres
 ---
-This is an [smk](smk).
 
 **Desenvolvido por:** Samuel Sampaio (@samukasmk)
 
